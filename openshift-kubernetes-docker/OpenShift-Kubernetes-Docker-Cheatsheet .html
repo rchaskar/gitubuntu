@@ -1,0 +1,1159 @@
+<!DOCTYPE html>
+<!-- saved from url=(0024)https://okd.iamgini.com/ -->
+<html lang="en-US"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+    
+    
+
+<!-- Begin Jekyll SEO tag v2.6.1 -->
+<title>OpenShift-Kubernetes-Docker-Cheatsheet | Comprehensive CLI Cheatsheet for OpenShift, Kubernetes and Docker</title>
+<meta name="generator" content="Jekyll v3.8.5">
+<meta property="og:title" content="OpenShift-Kubernetes-Docker-Cheatsheet">
+<meta property="og:locale" content="en_US">
+<meta name="description" content="Comprehensive CLI Cheatsheet for OpenShift, Kubernetes and Docker">
+<meta property="og:description" content="Comprehensive CLI Cheatsheet for OpenShift, Kubernetes and Docker">
+<link rel="canonical" href="https://okd.iamgini.com/">
+<meta property="og:url" content="https://okd.iamgini.com/">
+<meta property="og:site_name" content="OpenShift-Kubernetes-Docker-Cheatsheet">
+<script type="application/ld+json">
+{"headline":"OpenShift-Kubernetes-Docker-Cheatsheet","@type":"WebSite","url":"https://okd.iamgini.com/","name":"OpenShift-Kubernetes-Docker-Cheatsheet","description":"Comprehensive CLI Cheatsheet for OpenShift, Kubernetes and Docker","@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#157878">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <link rel="stylesheet" href="./OpenShift-Kubernetes-Docker-Cheatsheet _ Comprehensive CLI Cheatsheet for OpenShift, Kubernetes and Docker_files/style.css">
+    <link href="./OpenShift-Kubernetes-Docker-Cheatsheet _ Comprehensive CLI Cheatsheet for OpenShift, Kubernetes and Docker_files/css" rel="stylesheet">
+  </head>
+  <body>
+    <!-- <a id="skip-to-content" href="#content">Skip to the content.</a> -->
+
+    <header class="page-header" role="banner">
+      <h1 class="project-name">OpenShift-Kubernetes-Docker-Cheatsheet</h1>
+      <h2 class="project-tagline">Comprehensive CLI Cheatsheet for OpenShift, Kubernetes and Docker</h2>
+      <a class="btn" href="https://www.iamgini.com/">iamgini.com</a>
+      <!--
+      
+        <a href="https://github.com/ginigangadharan/openshift-kubernetes-docker-cheatsheet" class="btn">View on GitHub</a>
+      
+      -->
+      
+    </header>
+
+    <main id="content" class="main-content" role="main">
+      <h1 id="openshift-kubernetes-docker-cheatsheet">OpenShift-Kubernetes-Docker-Cheatsheet</h1>
+
+<p><strong>Comprehensive CLI Cheatsheet for OpenShift, Kubernetes and Docker.</strong></p>
+
+<p>Most of the time <code class="language-plaintext highlighter-rouge">oc</code> and <code class="language-plaintext highlighter-rouge">kubectl</code> shares the same command set but some cases we have some differences.</p>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">oc</code> has support for logging to OpenShift cluster</li>
+  <li>with <code class="language-plaintext highlighter-rouge">kubectl</code> you need to create your kubeconfig file with credentials.</li>
+</ul>
+
+<p><strong>Read more OpenShift articles and How-to’s on <a href="https://www.techbeatly.com/category/cloud/openshift">techbeatly.com</a></strong></p>
+
+<p><strong>References</strong></p>
+<ul>
+  <li><a href="https://access.redhat.com/documentation/en-us/openshift_container_platform/4.1/html/cli_reference/cli-developer-commands">Developer CLI Commands</a></li>
+  <li><a href="https://cloudowski.com/articles/10-differences-between-openshift-and-kubernetes/">10 most important differences between OpenShift and Kubernetes</a></li>
+  <li><a href="https://blog.openshift.com/enterprise-kubernetes-with-openshift-part-one/">Enterprise Kubernetes with OpenShift (Part one)</a></li>
+</ul>
+
+<p><strong>Table of Contents</strong>
+<!-- TOC updateonsave:true depthfrom:2 depthto:3 orderedlist:false --></p>
+
+<ul>
+  <li><a href="https://okd.iamgini.com/#openshift-kubernetes-docker-cheatsheet">OpenShift-Kubernetes-Docker-Cheatsheet</a>
+    <ul>
+      <li><a href="https://okd.iamgini.com/#cli-installation">CLI Installation</a>
+        <ul>
+          <li><a href="https://okd.iamgini.com/#openshift-cli-installation">OpenShift CLI Installation</a></li>
+          <li><a href="https://okd.iamgini.com/#install-and-set-up-kubectl">Install and Set Up kubectl</a></li>
+        </ul>
+      </li>
+      <li><a href="https://okd.iamgini.com/#basic-structure-of-openshiftkubernetes-defenition-file">Basic Structure of OpenShift/Kubernetes defenition file</a></li>
+      <li><a href="https://okd.iamgini.com/#login-and-logout">Login and Logout</a></li>
+      <li><a href="https://okd.iamgini.com/#oc-status">oc status</a></li>
+      <li><a href="https://okd.iamgini.com/#managing-projects">Managing Projects</a></li>
+      <li><a href="https://okd.iamgini.com/#viewing-finding-resources">Viewing, Finding Resources</a></li>
+      <li><a href="https://okd.iamgini.com/#taints-and-tolerations">Taints and Tolerations</a></li>
+      <li><a href="https://okd.iamgini.com/#controlling-access--managing-users">Controlling Access &amp; Managing Users</a>
+        <ul>
+          <li><a href="https://okd.iamgini.com/#check-access">Check Access</a></li>
+        </ul>
+      </li>
+      <li><a href="https://okd.iamgini.com/#oc-describe">oc describe</a></li>
+      <li><a href="https://okd.iamgini.com/#oc-export">oc export</a></li>
+      <li><a href="https://okd.iamgini.com/#managing-pods">Managing pods</a>
+        <ul>
+          <li><a href="https://okd.iamgini.com/#static-pods">Static Pods</a></li>
+        </ul>
+      </li>
+      <li><a href="https://okd.iamgini.com/#managing-nodes">Managing Nodes</a></li>
+      <li><a href="https://okd.iamgini.com/#pv--pvc---persistentvolume--persistentvolumeclaim">PV &amp; PVC - PersistentVolume &amp; PersistentVolumeClaim</a></li>
+      <li><a href="https://okd.iamgini.com/#oc-exec---execute-command-inside-a-containe">oc exec - execute command inside a containe</a></li>
+      <li><a href="https://okd.iamgini.com/#events-and-troubleshooting">Events and Troubleshooting</a></li>
+      <li><a href="https://okd.iamgini.com/#help-and-understand">Help and Understand</a></li>
+      <li><a href="https://okd.iamgini.com/#applications">Applications</a></li>
+      <li><a href="https://okd.iamgini.com/#get-help">Get Help</a></li>
+      <li><a href="https://okd.iamgini.com/#build-from-image">Build from image</a></li>
+      <li><a href="https://okd.iamgini.com/#enabledisable-scheduling">Enable/Disable scheduling</a></li>
+      <li><a href="https://okd.iamgini.com/#resource-quotas">Resource quotas</a></li>
+      <li><a href="https://okd.iamgini.com/#labels--annotations">Labels &amp; Annotations</a></li>
+      <li><a href="https://okd.iamgini.com/#limit-ranges">Limit ranges</a></li>
+      <li><a href="https://okd.iamgini.com/#clusterquota-or-clusterresourcequota">ClusterQuota or ClusterResourceQuota</a></li>
+      <li><a href="https://okd.iamgini.com/#config-view">Config View</a></li>
+      <li><a href="https://okd.iamgini.com/#managing-environment-variables">Managing Environment Variables</a></li>
+      <li><a href="https://okd.iamgini.com/#security-context-constraints">Security Context Constraints</a></li>
+      <li><a href="https://okd.iamgini.com/#services--routes">Services &amp; Routes</a></li>
+      <li><a href="https://okd.iamgini.com/#scaling--autoscaling-of-the-pod---horizontalpodautoscaler">Scaling &amp; AutoScaling of the pod - HorizontalPodAutoscaler</a></li>
+      <li><a href="https://okd.iamgini.com/#configuration-maps-configmap">Configuration Maps (ConfigMap)</a></li>
+      <li><a href="https://okd.iamgini.com/#creation-of-objects">Creation of objects</a></li>
+      <li><a href="https://okd.iamgini.com/#reading-config-maps">Reading config maps</a></li>
+      <li><a href="https://okd.iamgini.com/#dynamically-change-the-config-map">Dynamically change the config map</a></li>
+      <li><a href="https://okd.iamgini.com/#mounting-config-map-as-env">Mounting config map as ENV</a></li>
+      <li><a href="https://okd.iamgini.com/#the-replication-controller">The Replication Controller</a></li>
+      <li><a href="https://okd.iamgini.com/#persistentvolume">PersistentVolume</a></li>
+      <li><a href="https://okd.iamgini.com/#persistentvolumeclaim">PersistentVolumeClaim</a></li>
+      <li><a href="https://okd.iamgini.com/#deployments">Deployments</a></li>
+      <li><a href="https://okd.iamgini.com/#deployment-strategies">Deployment strategies</a></li>
+      <li><a href="https://okd.iamgini.com/#rolling">Rolling</a></li>
+      <li><a href="https://okd.iamgini.com/#triggers">Triggers</a></li>
+      <li><a href="https://okd.iamgini.com/#recreate">Recreate</a></li>
+      <li><a href="https://okd.iamgini.com/#custom">Custom</a></li>
+      <li><a href="https://okd.iamgini.com/#lifecycle-hooks">Lifecycle hooks</a></li>
+      <li><a href="https://okd.iamgini.com/#deployment-pod-resources">Deployment Pod Resources</a></li>
+      <li><a href="https://okd.iamgini.com/#blue-green-deployments">Blue-Green deployments</a></li>
+      <li><a href="https://okd.iamgini.com/#ab-deployments">A/B Deployments</a></li>
+      <li><a href="https://okd.iamgini.com/#canary-deployments">Canary Deployments</a></li>
+      <li><a href="https://okd.iamgini.com/#rollbacks">Rollbacks</a></li>
+      <li><a href="https://okd.iamgini.com/#pipelines">Pipelines</a></li>
+      <li><a href="https://okd.iamgini.com/#configuration-management">Configuration Management</a></li>
+      <li><a href="https://okd.iamgini.com/#secrets">Secrets</a></li>
+      <li><a href="https://okd.iamgini.com/#creation">Creation</a></li>
+      <li><a href="https://okd.iamgini.com/#using-secrets-in-pods">Using secrets in Pods</a></li>
+      <li><a href="https://okd.iamgini.com/#env">ENV</a></li>
+      <li><a href="https://okd.iamgini.com/#adding">Adding</a></li>
+      <li><a href="https://okd.iamgini.com/#removing">Removing</a></li>
+      <li><a href="https://okd.iamgini.com/#change-triggers">Change triggers</a></li>
+      <li><a href="https://okd.iamgini.com/#openshift-builds">OpenShift Builds</a>
+        <ul>
+          <li><a href="https://okd.iamgini.com/#build-strategies">Build strategies</a></li>
+          <li><a href="https://okd.iamgini.com/#build-sources">Build sources</a></li>
+          <li><a href="https://okd.iamgini.com/#build-configurations">Build Configurations</a></li>
+          <li><a href="https://okd.iamgini.com/#s2i">S2I</a></li>
+        </ul>
+      </li>
+      <li><a href="https://okd.iamgini.com/#troubleshooting">Troubleshooting</a></li>
+      <li><a href="https://okd.iamgini.com/#integrated-logging">Integrated logging</a></li>
+      <li><a href="https://okd.iamgini.com/#simple-metrics">Simple metrics</a></li>
+      <li><a href="https://okd.iamgini.com/#resource-scheduling">Resource scheduling</a></li>
+      <li><a href="https://okd.iamgini.com/#multiproject-quota">Multiproject quota</a></li>
+      <li><a href="https://okd.iamgini.com/#essential-docker-registry-commands">Essential Docker Registry Commands</a>
+        <ul>
+          <li><a href="https://okd.iamgini.com/#private-docker-registry-and-access">Private Docker Registry and Access</a></li>
+        </ul>
+      </li>
+      <li><a href="https://okd.iamgini.com/#docker-commands">Docker Commands</a>
+        <ul>
+          <li><a href="https://okd.iamgini.com/#image-handling">Image Handling</a></li>
+          <li><a href="https://okd.iamgini.com/#running-containers">Running Containers</a></li>
+          <li><a href="https://okd.iamgini.com/#docker-utilities">Docker Utilities</a></li>
+          <li><a href="https://okd.iamgini.com/#cleaning-docker-environment">Cleaning Docker Environment</a></li>
+        </ul>
+      </li>
+      <li><a href="https://okd.iamgini.com/#basic-networking">Basic Networking</a></li>
+      <li><a href="https://okd.iamgini.com/#technical-jargons">Technical Jargons</a></li>
+      <li><a href="https://okd.iamgini.com/#points-to-remember">Points to Remember</a></li>
+    </ul>
+  </li>
+</ul>
+
+<!-- /TOC -->
+
+<h2 id="cli-installation">CLI Installation</h2>
+
+<h3 id="openshift-cli-installation">OpenShift CLI Installation</h3>
+
+<p><code class="language-plaintext highlighter-rouge">oc</code> command line tool will be installed on all master and node machines during cluster installation. You can also install oc utility on any other machines which is not part of openshift cluster. 
+Download oc cli tool from : https://www.okd.io/download.html</p>
+
+<p>On a RHEL system with valid subscription you can install with yum as below.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ sudo yum install -y atomic-openshift-clients
+</code></pre></div></div>
+
+<p>Many common oc operations are invoked using the following syntax:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ oc &lt;action&gt; &lt;object_type&gt; &lt;object_name_or_id&gt;
+</code></pre></div></div>
+
+<h3 id="install-and-set-up-kubectl">Install and Set Up kubectl</h3>
+
+<p>Download the latest release with the command:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>curl -LO https://storage.googleapis.com/kubernetes-release/release/`curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt`/bin/linux/amd64/kubectl
+</code></pre></div></div>
+
+<p>Make the kubectl binary executable.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>chmod +x ./kubectl
+</code></pre></div></div>
+
+<p>Move the binary in to your PATH.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>sudo mv ./kubectl /usr/local/bin/kubectl
+</code></pre></div></div>
+
+<p>Test to ensure the version you installed is up-to-date:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>kubectl version
+</code></pre></div></div>
+
+<h2 id="basic-structure-of-openshiftkubernetes-defenition-file">Basic Structure of OpenShift/Kubernetes defenition file</h2>
+
+<p>(below one is a service definition)</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>apiVersion: v1
+kind: Service
+metadata: 
+  name: my-service
+spec:
+  type: NodePort
+  ports:
+    - targetPort: 80
+      port: 80
+      nodePort: 30008
+  selector:
+    app: myapp
+    type: front-end
+</code></pre></div></div>
+
+<h2 id="login-and-logout">Login and Logout</h2>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>oc login https://10.142.0.2:8443 -u admin -p openshift 
+                              # Login to openshift cluster
+oc whoami                     # identify the current login
+oc login -u system:admin      # login to cluster from any master node without a password
+oc logout                     # logout from cluster
+</code></pre></div></div>
+
+<h2 id="oc-status">oc status</h2>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>oc status -v                  # get oc cluster status
+oc types                      # to list all concepts and types
+</code></pre></div></div>
+
+<h2 id="managing-projects">Managing Projects</h2>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>oc get projects               # list Existing Projects
+oc get project                # Display current project
+oc project myproject          # switch to a project
+oc new-project testlab --display-name='testlab' --description='testlab'        
+                              # create a new project
+oc adm new-project testlab --node-selector='project101=testlab'
+                              # create a new project with node-selector. 
+                              # Project pods will be created only those nodes with a label "project101=testlab"
+oc delete project testlab     # delete a project
+oc delete all --all           # delete all from a project
+oc delete all -l app=web      # delete all where label app=web
+</code></pre></div></div>
+
+<h2 id="viewing-finding-resources">Viewing, Finding Resources</h2>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>oc get all                    # list all resource items
+                                -w  watches the result output in realtime.
+oc process                    # process a template into list of resources.                              
+</code></pre></div></div>
+
+<h2 id="taints-and-tolerations">Taints and Tolerations</h2>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>kubectl taint nodes node1 app=blue:NoSchedule
+                              # Apply taint on node
+kubectl taint nodes node1 app=blue:NoSchedule-                               
+                              # untaint a node by using "-" at the end.
+</code></pre></div></div>
+
+<h2 id="controlling-access--managing-users">Controlling Access &amp; Managing Users</h2>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>oc create user USER_NAME       # create a user
+oc adm add-role-to-user ROLE_NAME USERNAME -n PROJECT_NAME
+                              # add cluster role to a user
+                              # add-role-to-group - to add role to a group
+                              # add-cluster-role-to-user - to add cluster role to a user
+                              # add-cluster-role-to-group - to add cluster role to a group
+eg:
+oc adm add-role-to-user edit demo-user -n demo-project
+oc adm policy add-cluster-role-to-user cluster-admin develoer
+                              # add cluster-admin role to the user developer                              
+oc adm policy remove-cluster-role-from-group \
+  self-provisioner \
+  system:authenticated \
+  system:authenticated:oauth
+                              # remove role from a group
+oc get sa                     # list all service accounts
+oc get cluserrole             # list all cluster rolesrole  
+oc get rolebinding -n PROJECT_NAME
+                              # list all roles details for the project
+oc describe policybindings :default -n PROJECT_NAME
+                              # OCP 3.7 &lt; show details of a project policy details 
+oc describe rolebinding.rbac -n PROJECT_NAME
+                              # OCP 3.7 &gt; show details of a project policy details  
+oc describe user USER_NAME    # details of a user    
+oc adm policy who-can edit pod -n PROJECT_NAME
+                              # list details of access
+</code></pre></div></div>
+
+<p>You can also create user with HTPasswdIdentityProvider module as below.</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>htpasswd -b /etc/origin/master/htpasswd user1 password1
+                              # create user1
+                              # -b used to take password from command line rather than promopting for it.
+htpasswd -D /etc/origin/master/htpasswd user1
+                              # -D deletes user1
+</code></pre></div></div>
+
+<h3 id="check-access">Check Access</h3>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>kubectl auth can-i create deployments
+                                      # check access 
+kubectl auth can-i create deployments \
+  --as user1
+                                      # check access for a user
+kubectl auth can-i create deployments \
+  --as user1 \
+  --namespace dev                     
+                                      # check access for a user in a namespace
+</code></pre></div></div>
+
+<h2 id="oc-describe">oc describe</h2>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>oc describe node &lt;node1&gt;      # show deatils of a specific resource
+oc describe pod POD_NAME      # pod details                               
+oc describe svc SERVICE_NAME  # service details                               
+oc describe route ROUTE_NAME  # route details                               
+</code></pre></div></div>
+
+<h2 id="oc-export">oc export</h2>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>oc export RESOURCE_TYPE RESOURCE_NAME -o OUTPUT_FORMAT
+                              # export a definition of a resource (creating a backup etc) in JSON or YAML format.
+oc export pod mysql-1-p1d35 -o yaml
+oc export svc/myapp -o json
+
+</code></pre></div></div>
+
+<h2 id="managing-pods">Managing pods</h2>
+<p>Get pods, Rollout, delete etc.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>oc get pods                   # list running pods inside a project
+oc get pods -o wide           # detailed listing of pods
+oc get pod -o name            # for pod names
+oc get pods -n PROJECT_NAME   # list running pods inside a project/name-space
+oc get pods --show-labels     # show pod labels
+oc get pods --selector env=dev
+                              # list pods with env=dev
+oc get po POD_NAME -o=jsonpath="{..image}"
+                              # get othe pod image details
+oc get po POD_NAME -o=jsonpath="{..uid}"
+                              # get othe pod uid details
+oc adm manage-node NODE_NAME --list-pods
+                              # list all pods running on specific node
+oc rollout history dc/&lt;name&gt;  # available revisions
+oc rollout latest hello       # deploy a new version of app.
+oc rollout undo dc/&lt;name&gt;     # rollback to the last successful 
+                                deployed revision of your configuration
+oc rollout cancel dc/hello    # cancel current depoyment 
+
+oc delete pod POD_NAME -n PROJECT_NAME --grace-period=0 --force
+                              # delete a pod forcefully
+                                if pod still stays in Terminating state, 
+                                try replace deletionTimestamp: null
+                                as well as finalizers: null  
+                                (it may contain an item foregroundDeletion, 
+                                remove that)
+kubectl get pods \
+  --server kubesandbox:6443 \
+  --client-key admin.key \
+  --client-certificate admin.crt \
+  --certificate-authority ca.cert
+                              #  specify credential and certificate details.
+
+kubectl get pods --kubeconfig config                              
+                              # or put those info inside a file `config` \
+                                and call --kubeconfig in command
+</code></pre></div></div>
+
+<h3 id="static-pods">Static Pods</h3>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>kubectl run --restart=Never --image=busybox static-busybox --dry-run -o yaml --command -- sleep 1000 &gt; /etc/kubernetes/manifests/static-busybox.yaml                                
+                                # Create a static pod named static-busybox 
+                                  that uses the busybox image and 
+                                  the command sleep 1000
+</code></pre></div></div>
+
+<h2 id="managing-nodes">Managing Nodes</h2>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>oc get nodes                  # list nodes in a cluster
+oc get node/NODE_NAME -o yaml
+                              # to see a node’s current capacity and allocatable resources
+oc get nodes --show-labels | grep -i "project101=testlab"
+                              # show nodes info with lable and list only node with a lable "project101=testlab"
+oc get nodes -L region -L env
+                              # show nodes with "region" and "evn" labels
+
+oadm manage-node compute-102 --schedulable=false
+kubectl cordon node-2
+                              # make a node unschedulable
+                              
+oc adm drain compute-102                              
+kubectl drain node-1          # drain node by evicting pods
+                              -–force — force deletion of bare pods
+                              –-delete-local-data — delete even if there are 
+                                pods using emptyDir (local data that will be deleted
+                                when the node is drained)
+                              -–ignore-daemonsets — ignore daemonset-managed pods
+                              
+oadm manage-node compute-102 --schedulable=true
+kubectl uncordon node-1       # enable scheduling on node
+</code></pre></div></div>
+
+<h2 id="pv--pvc---persistentvolume--persistentvolumeclaim">PV &amp; PVC - PersistentVolume &amp; PersistentVolumeClaim</h2>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>oc get pv                       # list all pv in the cluster
+oc create -f mysqldb-pv.yml     # create a pv with template
+oc get pvc -n PROJECT_NAME      # list all pvc in the project
+oc set volume dc/mysqldb \
+  --add --overwrite --name=mysqldb-volume-1 -t pvc \
+  --claim-name=mysqldb-pvclaim \
+  --claim-size=3Gi \
+  --claim-mode='ReadWriteMany'
+                                # Create volume claim for mysqldb-volume-1
+kubectl get pv
+kubectl get pvc
+</code></pre></div></div>
+
+<h2 id="oc-exec---execute-command-inside-a-containe">oc exec - execute command inside a containe</h2>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>oc exec  &lt;pd&gt; -i -t -- &lt;command&gt; 
+                              # run command inside a container without login
+                                eg: oc exec  my-php-app-1mmh1 -i -t -- curl -v http://dbserver:8076
+</code></pre></div></div>
+
+<h2 id="events-and-troubleshooting">Events and Troubleshooting</h2>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>oc get events                 # list events inside cluster
+oc logs POD                   # get logs from pod
+oc logs &lt;pod&gt; --timestamps    
+oc logs -f bc/myappx          # check logs of bc
+oc rsh &lt;pod&gt;                  # login to a pod
+
+kubectl logs -f POD_NAME CONTAINER_NAME
+                              # mention container name if you have
+                                more than one container inside pod
+</code></pre></div></div>
+
+<h2 id="help-and-understand">Help and Understand</h2>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>oc explain &lt;resource&gt;         # documentation of a resource and its fields
+                                eg: oc explain pod
+                                    oc explain pod.spec.volumes.configMap
+</code></pre></div></div>
+
+<h2 id="applications">Applications</h2>
+
+<p><code class="language-plaintext highlighter-rouge">oc new-app</code> will create a,</p>
+<ul>
+  <li>dc (deploynment configuration)</li>
+  <li>is (image stream)</li>
+  <li>svc (service)</li>
+</ul>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>oc new-app -h                     # list all options and examples
+oc new-app mysql MYSQL_USER=user MYSQL_PASSWORD=pass MYSQL_DATABASE=mydb -l db=mysql
+                                  # create a new application
+oc new-app --docker-image=myregistry.example.com/dockers/myapp --name=myapp
+                                  # create a new application from private registry
+oc new-app https://github.com/techbeatly/python-hello-world --name=python-hello
+                                  # create a new application from source code (s2i)
+                                  # -i or --image-stream=[] : Name of an image stream to use in the app
+</code></pre></div></div>
+
+<p>How to find registry ?</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>oc get route -n default           # you can see the registry url
+</code></pre></div></div>
+
+<h2 id="get-help">Get Help</h2>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+# 2. oc help                      # list oc command help options
+</code></pre></div></div>
+
+<h2 id="build-from-image">Build from image</h2>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>oc new-build openshift/nodejs-010-centos7~https://github.com/openshift/nodejs-ex.git --name='newbuildtest'
+</code></pre></div></div>
+
+<h2 id="enabledisable-scheduling">Enable/Disable scheduling</h2>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>oadm manage-node mycbjnode --schedulable=false 
+                              # Disable scheduling on node
+</code></pre></div></div>
+
+<h2 id="resource-quotas">Resource quotas</h2>
+
+<p>Hard constraints how much memory/CPU your project can consume</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>oc create -f &lt;YAML_FILE_with_kind: ResourceQuota&gt; -n PROJECT_NAME
+                              # create quota details with YAML tempalte where kind should ResourceQuota
+                              # Sample : https://github.com/ginigangadharan/openshift-cli-cheatsheet/blob/master/quota-template-32Gi_no_limit.yaml
+oc describe quota -n PROJECT_NAME
+                              # describe the quota details
+oc get quota -n PROJECT_NAME  
+                              # get quota details of the project
+oc delete quota -n PROJECT_NAME 
+                              # delete a quota for the project                            
+</code></pre></div></div>
+
+<h2 id="labels--annotations">Labels &amp; Annotations</h2>
+
+<ol>
+  <li>Label examples: release, environment, relationship, dmzbased, tier, node type, user type
+    <ul>
+      <li>Identifying metadata consisting of key/value pairs attached to resources</li>
+    </ul>
+  </li>
+  <li>Annotation examples: example.com/skipValidation=true, example.com/MD5checksum-1234ABC, example.com/BUILDDATE=20171217
+    <ul>
+      <li>Primarily concerned with attaching non-identifying information, which is used by other clients such as tools or libraries</li>
+    </ul>
+  </li>
+</ol>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>oc label node1 region=us-west zone=power1a --overwrite
+oc label node node2 region=apac-sg zone=power2b --overwrite
+oc patch node NODE_NAME -p '{"metadata": {"labels": {"project101":"testlab"}}}'
+                              # add label to node
+oc patch dc myapp --patch '{"spec":{"template":{"nodeselector":{"env":"qa"}}}'
+                              # modify dc to run pods only on nodes where label 'evn':'qa'
+oc label secret ssl-secret env=test
+                              # add label                              
+</code></pre></div></div>
+
+<h2 id="limit-ranges">Limit ranges</h2>
+
+<ul>
+  <li>mechanism for specifying default project CPU and memory limits and requests</li>
+</ul>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>oc get limits -n development
+oc describe limits core-resource-imits -n development
+</code></pre></div></div>
+
+<h2 id="clusterquota-or-clusterresourcequota">ClusterQuota or ClusterResourceQuota</h2>
+
+<p>Ref: https://docs.openshift.com/container-platform/3.3/admin_guide/multiproject_quota.html</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>oc create clusterquota for-user-developer --project-annotation-selector openshift.io/requester=developer --hard pods=8
+oc get clusterresourcequota |grep USER
+                              # find the clusterresourcequota for USER
+oc describe clusterresourcequota USER
+</code></pre></div></div>
+
+<h2 id="config-view">Config View</h2>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>oc config view                  # command to view your current, full CLI configuration
+                                  also can see the cluster url, project url etc.
+
+kubectl config view             # to view the config in ~/.kube/config
+
+kubectl config view --kubeconfig=path-to-config-file
+                                # to view the config
+
+kubectl config use-context dev@singapore-cluster                              
+                                # to change the current-context 
+                                
+kubectl config -h               # to list avaialbe options    
+</code></pre></div></div>
+
+<h2 id="managing-environment-variables">Managing Environment Variables</h2>
+
+<p>https://docs.openshift.com/enterprise/3.0/dev_guide/environment_variables.html</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>oc env rc/RC_NAME --list -n PROJECT
+                                # list environment variable for the rc
+oc env rc my-newapp MAX_HEAP_SIZE=128M
+                                # set environment variable for the rc
+</code></pre></div></div>
+
+<h2 id="security-context-constraints">Security Context Constraints</h2>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>oc get scc                      # list all seven SCCs
+                                      - anyuid
+                                      - hostaccess
+                                      - Hostmount-anyuid
+                                      - hostnetwork    	
+                                      - nonroot
+                                      - privileged
+                                      - restricted
+oc describe scc SCC_NAME        # can see which all service account enabled.                                      
+</code></pre></div></div>
+
+<h2 id="services--routes">Services &amp; Routes</h2>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>oc expose service SERVICE_NAME route-name-project-name.default-domain
+or
+oc expose svc SERVICE_NAME
+                                # create/expose a service route
+eg:
+oc expose service myapache --name=myapache --hostname=myapache.app.cloudapps.example.com
+                                # if you don't mention the hostname, then
+                                # it will create a hostname as route-name-project-name.default-domain
+                                # if you don't mention the route name, then
+                                # it will take the service name as route name
+
+oc port-forward POD_NAME 3306:3306
+                                # temporary port-forwarding to a port from local host.
+</code></pre></div></div>
+
+<h2 id="scaling--autoscaling-of-the-pod---horizontalpodautoscaler">Scaling &amp; AutoScaling of the pod - HorizontalPodAutoscaler</h2>
+
+<p><strong>OpenShift</strong></p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>oc scale dc/APP_NAME --replicas=2                              
+                                # scale application (increase or decrease replicas)
+oc autoscale dc my-app --min 1 --max 4 --cpu-percent=75
+                                # enable autoscaling for my-app
+oc get hpa my-app               # list Horizontal Pod Autoscaler
+oc describe hpa/my-app
+</code></pre></div></div>
+
+<p><strong>Kubernetes</strong></p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>kubectl create -f replicaset-defenition.yml
+                                # create replicaset
+kubectl create -f replicaset-defenition.yml -namespace=YOUR_NAMESPACE
+                              # create in a specific namespace                         
+kubectl replace -f replicaset-defenition.yml
+                                # change the replicas option in replicaset defenition
+                                # and then run it
+kubectl scale --replicas=6 -f replicaset-defenition.yml
+kubectl scale --replicas=6 replicaset myapp-replicaset
+                                # this one will not update replica details 
+                                # in replicaset defenition file
+kubectl delete replicaset myapp-replicaset
+                                # delete replicaset
+</code></pre></div></div>
+
+<h2 id="configuration-maps-configmap">Configuration Maps (ConfigMap)</h2>
+
+<ul>
+  <li>Similar to secrets, but with non-sensitive text-based configuration</li>
+</ul>
+
+<h2 id="creation-of-objects">Creation of objects</h2>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>oc create configmap test-config --from-literal=key1=config1 --from-literal=key2=config2 --from-file=filters.properties
+
+oc volume dc/nodejs-ex --add -t configmap -m /etc/config --name=app-config --configmap-name=test-config
+</code></pre></div></div>
+
+<h2 id="reading-config-maps">Reading config maps</h2>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>oc rsh nodejs-ex-26-44kdm ls /etc/config
+</code></pre></div></div>
+
+<h2 id="dynamically-change-the-config-map">Dynamically change the config map</h2>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>oc delete configmap test-config
+
+&lt;CREATE AGAIN WITH NEW VALUES&gt;
+
+&lt;NO NEED FOR MOUNTING AS VOLUME AGAIN&gt;
+</code></pre></div></div>
+
+<h2 id="mounting-config-map-as-env">Mounting config map as ENV</h2>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>oc set env dc/nodejs-ex --from=configmap/test-config
+oc describe pod nodejs-ex-27-mqurr
+</code></pre></div></div>
+
+<h2 id="the-replication-controller">The Replication Controller</h2>
+<p><em>to be done</em></p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>oc describe RESOURCE RESOURCE_NAME
+oc export
+oc create
+oc edit
+oc exec POD_NAME &lt;options&gt; &lt;command&gt;
+oc rsh POD_NAME &lt;options&gt;
+oc delete RESOURCE_TYPE name
+oc version
+docker version
+
+oc cluster up \
+  --host-data-dir=... \
+  --host-config-dir=...
+
+oc cluster down
+
+oc cluster up \
+  --host-data-dir=... \
+  --host-config-dir=... \
+  --use-existing-config
+
+oc project myproject
+</code></pre></div></div>
+
+<h2 id="persistentvolume">PersistentVolume</h2>
+
+<ul>
+  <li>Supports stateful applications</li>
+  <li>Volumes backed by shared storage which are mounted into running pods</li>
+  <li>iSCSI, AWS EBS, NFS etc.</li>
+</ul>
+
+<h2 id="persistentvolumeclaim">PersistentVolumeClaim</h2>
+
+<ul>
+  <li>Manifests that pods use to retreive and mount the volume into pod at initialization time</li>
+  <li>Access modes: REadWriteOnce, REadOnlyMany, ReadWriteMany</li>
+</ul>
+
+<h2 id="deployments">Deployments</h2>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>kubectl run blue --image=nginx --replicas=6
+                                # Create a new deployment named blue
+                                  with nginx image and 6 replicas
+kubectl set image deployment/myapp-dc                                
+                                # specify new image to deployment
+kubectl apply -f DEFINITION.YML                                
+                                # apply new config to existing deployment
+kubectl rollout undo deployment/myapp-dc                                
+                                # rollback a deployment
+kubectl rollout status deployment/myapp-dc                                
+                                # status of deployment
+kubectl rollout history deployment/myapp-dc                                
+                                # history of deployment
+</code></pre></div></div>
+
+<h2 id="deployment-strategies">Deployment strategies</h2>
+
+<h2 id="rolling">Rolling</h2>
+
+<h2 id="triggers">Triggers</h2>
+
+<h2 id="recreate">Recreate</h2>
+
+<h2 id="custom">Custom</h2>
+
+<h2 id="lifecycle-hooks">Lifecycle hooks</h2>
+
+<h2 id="deployment-pod-resources">Deployment Pod Resources</h2>
+
+<h2 id="blue-green-deployments">Blue-Green deployments</h2>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>oc new-app https://github.com/devops-with-openshift/bluegreen#green --name=green
+oc patch route/bluegreen -p '{"spec":{"to":{"name":"green"}}}'
+oc patch route/bluegreen -p '{"spec":{"to":{"name":"blue"}}}'
+</code></pre></div></div>
+
+<h2 id="ab-deployments">A/B Deployments</h2>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>oc annotate route/ab haproxy.router.openshift.io/balance=roundrobin
+oc set route-backends ab cats=100 city=0
+oc set route-backends ab --adjust city=+10%
+</code></pre></div></div>
+
+<h2 id="canary-deployments">Canary Deployments</h2>
+
+<h2 id="rollbacks">Rollbacks</h2>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>oc rollback cotd --to-version=1 --dry-run
+                                # Dry run only
+oc rollback cotd --to-version=1
+oc describe dc cotd
+</code></pre></div></div>
+
+<h2 id="pipelines">Pipelines</h2>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>oc new-app jenkins-pipeline-example
+oc start-build sample-pipeline
+</code></pre></div></div>
+
+<ul>
+  <li>Customizing Jenkins:</li>
+</ul>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>vim openshift.local.config/master/master-confi.yaml
+
+jenkinsPipelineConfig:
+  autoProvisionEnabled: true
+  parameters:
+    JENKINS_IMAGE_STREAM_TAG: jenkins-2-rhel7:latest
+    ENABLE_OAUTH: true
+  serviceName: jenkins
+  templateName: jenkins-ephemeral
+  templateNamespace: openshift
+</code></pre></div></div>
+<ul>
+  <li>Good resource for Jenkinsfiles: https://github.com/fabric8io/fabric8-jenkinsfile-library</li>
+</ul>
+
+<h2 id="configuration-management">Configuration Management</h2>
+
+<h2 id="secrets">Secrets</h2>
+
+<h2 id="creation">Creation</h2>
+
+<ul>
+  <li>Maximum size 1MB</li>
+</ul>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>oc secret new test-secret cert.pem
+oc secret new ssl-secret keys=key.pem certs=cert.pem
+oc get secrets --show-labels=true
+oc delete secret ssl-secret
+</code></pre></div></div>
+
+<h2 id="using-secrets-in-pods">Using secrets in Pods</h2>
+
+<ul>
+  <li>Mounting the secret as a volume</li>
+</ul>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>oc volume dc/nodejs-ex --add -t secret --secret-name=ssl-secret -m /etc/keys --name=ssl-keys deploymentconfigs/nodejs-ex
+oc rsh nodejs-ex-22-8noey ls /etc/keys
+</code></pre></div></div>
+
+<ul>
+  <li>Injecting the secret as an env var</li>
+</ul>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>oc secret new env-secrets username=user-file password=password-file
+oc set env dc/nodejs-ex --from=secret/env-secret
+oc env dc/nodejs-ex --list
+</code></pre></div></div>
+
+<h2 id="env">ENV</h2>
+
+<h2 id="adding">Adding</h2>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>oc set env dc/nodejs-ex ENV=TEST DB_ENV=TEST1 AUTO_COMMIT=true
+oc set env dc/nodejs-ex --list
+</code></pre></div></div>
+
+<h2 id="removing">Removing</h2>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>oc set env dc/nodejs-ex DB_ENV-
+</code></pre></div></div>
+
+<h2 id="change-triggers">Change triggers</h2>
+
+<ol>
+  <li>
+    <p><code class="language-plaintext highlighter-rouge">ImageChange</code> - when uderlying image stream changes</p>
+  </li>
+  <li>
+    <p><code class="language-plaintext highlighter-rouge">ConfigChange</code> - when the config of the pod template changes</p>
+  </li>
+</ol>
+
+<h2 id="openshift-builds">OpenShift Builds</h2>
+
+<h3 id="build-strategies">Build strategies</h3>
+
+<ul>
+  <li>
+    <p>Source-to-Image (S2I): uses the opensource S2I tool to enable developers to reporducibly build images by layering the application’s soure onto a container image</p>
+  </li>
+  <li>
+    <p>Docker: using the Dockerfile</p>
+  </li>
+  <li>
+    <p>Pipeline: uses Jenkins, developers provide Jenkinsfile containing the requisite build commands</p>
+  </li>
+  <li>
+    <p>Custom: allows the developer to provide a customized builder image to build runtime image</p>
+  </li>
+</ul>
+
+<h3 id="build-sources">Build sources</h3>
+
+<ul>
+  <li>Git</li>
+  <li>Dockerfile</li>
+  <li>Image</li>
+  <li>Binary</li>
+</ul>
+
+<h3 id="build-configurations">Build Configurations</h3>
+
+<ul>
+  <li>contains the details of the chosen build strategy as well as the source</li>
+</ul>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>oc new-app https://github.com/openshift/nodejs-ex
+oc get bc/nodejs-ex -o yaml
+</code></pre></div></div>
+
+<ul>
+  <li>unless specified otherwise, the <code class="language-plaintext highlighter-rouge">oc new-app</code> command will scan the supplied Git repo. If it finds a Dockerfile, the Docker build strategy will be used; otherwise source strategy will be used and an S2I builder will be configured</li>
+</ul>
+
+<h3 id="s2i">S2I</h3>
+
+<ul>
+  <li>Components:</li>
+</ul>
+
+<ol>
+  <li>Builder image - installation and runtime dependencies for the app</li>
+  <li>S2I script - assemble/run/usage/save-artifacts/test/run</li>
+</ol>
+
+<ul>
+  <li>Process:</li>
+</ul>
+
+<ol>
+  <li>Start an instance of the builder image</li>
+  <li>Retreive the source artifacts from the specified repository</li>
+  <li>Place the source artifacts as well as the S2I scripts into the builder image (bundle into .tar and stream into builder image)</li>
+  <li>Execute assemble script</li>
+  <li>Commit the image and push to OCP registry</li>
+</ol>
+
+<ul>
+  <li>Customize the build process:</li>
+</ul>
+
+<ol>
+  <li>Custom S2I scripts - their own assemble/run etc. by placing scripts in .s2i/bin at the base of the source code, can also contain environment file</li>
+  <li>Custom S2I builder - write your own custom builder</li>
+</ol>
+
+<h2 id="troubleshooting">Troubleshooting</h2>
+
+<ul>
+  <li>Adding the –follow flag to the start-build command</li>
+  <li>oc get builds</li>
+  <li>oc logs build/test-app-3</li>
+  <li>oc set env bc/test-app BUILD_LOGLEVEL=5 S2I_DEBUG=true</li>
+</ul>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>oc adm diagnostics
+</code></pre></div></div>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">--dry-run</code>: To test your command; this will not create the resource, instead, tell you weather the resource can be created and if your command is right.</li>
+  <li>
+    <p><code class="language-plaintext highlighter-rouge">-o yaml</code>: to print the output in YAML (or JASON) format.</p>
+  </li>
+  <li>Operational layers:</li>
+</ul>
+
+<ol>
+  <li>Operating system infrastructure operations - compute, network, storage, OS</li>
+  <li>Cluster operations - cluster managemebt OpenShift/Kubernetes</li>
+  <li>Application operations - deployments, telemetry, logging</li>
+</ol>
+
+<h2 id="integrated-logging">Integrated logging</h2>
+
+<ul>
+  <li>the EFK (Elasticsearch/Fluentd/Kibana) stack aggregates logs from nodes and application pods</li>
+</ul>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>oc cluster up --logging=true
+</code></pre></div></div>
+
+<h2 id="simple-metrics">Simple metrics</h2>
+
+<ul>
+  <li>the Kubelet/Heapster/Cassandra and you can use Grafana to build dashboard</li>
+</ul>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>oc cluster up --metrics=true
+
+kubectl top node                # memory and CPU usage on node 
+kubectl top pod                 # memory and CPU usage by pods
+
+# 3. Enable metrics in minikube
+minikube addons enable metrics-server
+</code></pre></div></div>
+
+<h2 id="resource-scheduling">Resource scheduling</h2>
+
+<ul>
+  <li>default behavior:</li>
+</ul>
+
+<ol>
+  <li>
+    <p>best effor isolation = no primises what resources can be allocated for your project</p>
+  </li>
+  <li>
+    <p>might get defaulted values</p>
+  </li>
+  <li>
+    <p>out of memory killed randomly</p>
+  </li>
+  <li>
+    <p>might get CPU starved (wait to schedule your workload)</p>
+  </li>
+</ol>
+
+<h2 id="multiproject-quota">Multiproject quota</h2>
+
+<ul>
+  <li>you may use project labels or annotations when creating multiproject spanning quotas</li>
+</ul>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>oc login -u system:admin
+oc login -u developer -p developer
+oc describe AppliedClusterResourceQuota
+</code></pre></div></div>
+
+<h2 id="essential-docker-registry-commands">Essential Docker Registry Commands</h2>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>docker login -u USER_NAME -p TOKEN REGISTRY_URL
+                                # before we push images, we need to 
+                                  login to docker registry.
+                                  
+docker login -u developer -p ${TOKEN} \
+  docker-registry-default.apps.lab.example.com                                
+                                # TOKEN can be get as TOKEN=$(oc whoami)
+                                
+docker images --no-trunc --format ' ' --filter "dangling=true" --filter "before=IMAGE_ID"
+                                # list image with format and 
+                                # using multiple filters                                
+</code></pre></div></div>
+
+<h3 id="private-docker-registry-and-access">Private Docker Registry and Access</h3>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>kubectl create secret docker-registry private-docker-cred \
+    --docker-server=myregistry
+    --docker-username=registry-user
+    --docker-password=registry-password
+    --docker-email=registry-user@example.com
+                                # Create a secret for docker-registry
+</code></pre></div></div>
+<p>Then specify the image pull secret under the <code class="language-plaintext highlighter-rouge">imagePullSecrets</code> of pod/deployment definition (same level of <code class="language-plaintext highlighter-rouge">container</code>)</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    imagePullSecrets:
+    - name: private-docker-cred
+</code></pre></div></div>
+
+<h2 id="docker-commands">Docker Commands</h2>
+
+<h3 id="image-handling">Image Handling</h3>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>docker create [IMAGE]           # Create a new container from a particular image.
+docker search [term]            # Search the Docker Hub repository for a particular term.
+docker login                    # Log into the Docker Hub repository.
+docker pull [IMAGE]             # Pull an image from the Docker Hub repository.
+docker push [username/image]    # Push an image to the Docker Hub repository.
+docker tag [source] [target]    # Create a target tag or alias that refers to a source image.
+</code></pre></div></div>
+
+<h3 id="running-containers">Running Containers</h3>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>docker start [CONTAINER]        # Start a particular container.
+docker stop [CONTAINER]         # Stop a particular container.
+docker exec -ti [CONTAINER] [command]
+                                # Run a shell command inside a particular container.
+docker run -ti — image [IMAGE] [CONTAINER] [command]
+                                # Create and start a container at the same time, and then run a command inside it.
+docker run -ti — rm — image [IMAGE] [CONTAINER] [command]
+                                # Create and start a container at the same time, 
+                                # run a command inside it, and then remove the container 
+                                # after executing the command.
+docker pause [CONTAINER]        # Pause all processes running within a particular container.
+</code></pre></div></div>
+
+<h3 id="docker-utilities">Docker Utilities</h3>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>docker history [IMAGE]          # Display the history of a particular image.
+docker ps                       # List all of the containers that are currently running.
+docker version                  # Display the version of Docker that is currently installed on the system.
+docker images                   # List all of the images that are currently stored on the system.
+docker inspect [object]         # Display low-level information about a particular Docker object.
+</code></pre></div></div>
+
+<h3 id="cleaning-docker-environment">Cleaning Docker Environment</h3>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>docker kill [CONTAINER]         # Kill a particular container.
+docker kill $(docker ps -q)     # Kill all containers that are currently running.
+docker rm [CONTAINER]           # Delete a particular container that is not currently running.
+docker rm $(docker ps -a -q)    # Delete all containers that are not currently running.
+docker network ls               # list available networks
+</code></pre></div></div>
+
+<h2 id="basic-networking">Basic Networking</h2>
+<p>(For docker/kubernetes/openshift operations)</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>ip link                         # show interface of host
+ip addr add 10.1.10.10/24 dev eth0
+                                # assign IP to an interface
+ip route add 10.1.20.0/24 via 10.1.10.1
+                                # add a route to another network 10.1.20.0/24
+                                  via 10.1.10.1 which is our router/gateway.   
+ip route add default via 10.1.10.1
+                                # add defaulr route to any network; like internet
+                                  you can also mention 0.0.0.0/0 instead of default
+route                           # display kernel routing table
+
+ip netns add newnamespace       # create a new network namespace
+ip netns                        # list network namespaces
+ip netns exec red ping IP_ADDRESS
+ip netns exec newnamespace ip link
+                                # display details inside namespace
+ip link add veth-red type veth peer name veth-blue
+                                # create a pipe or virtual eth (veth) 
+ip link set veth-red netns red  
+                                # attach the virtual interface to a namespace          
+ip -n red addr add 10.1.10.1 dev veth-red
+                                # assign ip for virtual interface (veth) 
+                                  inside a namespace                                
+ip -n red link set veth-red up
+                                # make virtual interface up and running
+ip link add v-net-0 type bridge 
+                                # add linux bridge
+                                                                
+</code></pre></div></div>
+
+<h2 id="technical-jargons">Technical Jargons</h2>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>OSSM                OpenShift Service Mesh (OSSM)
+                    Istio is the upstream project
+                    - The upstream Istio community installation automatically 
+                      injects the sidecar to namespaces you have labeled.
+                    - Red Hat OpenShift Service Mesh does not automatically 
+                      inject the sidecar to any namespaces, but requires you to 
+                      specify the sidecar.istio.io/inject annotation as 
+                      illustrated in the Automatic sidecar injection section.
+
+CRI-O               Container Runtime Interface
+OCI                 Open Container Initiative
+cgroup              control group
+Jaeger              Distributed Tracing System
+kiali               observability console for Istio
+                    Kiali answers the questions:
+                    -  What microservices are part of my Istio service mesh?
+                    -  How are they connected?
+                    -  How are they performing?
+
+runc                CLI tool for spawning and running 
+                    containers according to the OCI specification.
+FaaS                Function as a Service
+CaaS                Containers as a service          
+                    
+</code></pre></div></div>
+
+<h2 id="points-to-remember">Points to Remember</h2>
+<ul>
+  <li>Docker was started as a project by a company called <strong><a href="https://www.docker.com/docker-news-and-press/dotcloud-inc-now-docker-inc">dotCloud</a></strong>, made available as open source in March 2013.</li>
+  <li>Kubernetes surfaced from work at Google in 2014, and became the standard way of managing containers.</li>
+</ul>
+
+
+
+      <footer class="site-footer">
+        <span class="site-footer-owner"><a href="https://www.iamgini.com/">iamgini.com</a> © 2020  </span>
+        <!--
+        
+          <span class="site-footer-owner"><a href="https://github.com/ginigangadharan/openshift-kubernetes-docker-cheatsheet">openshift-kubernetes-docker-cheatsheet</a> is maintained by <a href="https://github.com/ginigangadharan">ginigangadharan</a>.</span>
+        
+        <span class="site-footer-credits">This page was generated by <a href="https://pages.github.com">GitHub Pages</a>.</span>
+        -->
+      </footer>
+    </main>
+  
+
+</body></html>
